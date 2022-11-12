@@ -41,15 +41,25 @@ public class Identify {
 			
 		}
 		
-		identified = wordSlicer(rawText[indexI], true) + filler;
 		
-		for(int i = indexI + 1; i < indexF; i++)
+		
+		if(indexI != indexF)
 		{
-			identified = identified + rawText[i] + filler;
+			identified = wordSlicer(rawText[indexI], true) + filler;
+			
+			for(int i = indexI + 1; i < indexF; i++)
+			{
+				identified = identified + rawText[i] + filler;
+			}
+		
+			identified = identified + wordSlicer(rawText[indexF], false);
+		
 		}
 		
-		identified = identified + wordSlicer(rawText[indexF], false);
-		
+		else
+		{
+			identified = wordSlicer(wordSlicer(rawText[indexI], true), false);
+		}
 		
 		return identified;
 	}
